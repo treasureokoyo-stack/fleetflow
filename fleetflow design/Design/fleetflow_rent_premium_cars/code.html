@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FleetFlow - Premium Car Rentals</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Custom hide scrollbar for horizontal lists */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<!-- Tailwind Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303032",
+                        "on-background": "#1b1b1d",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#fefcff",
+                        "primary": "#000000",
+                        "surface": "#fcf8fa",
+                        "on-primary-fixed": "#131b2e",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9db",
+                        "tertiary-container": "#271901",
+                        "outline": "#76777d",
+                        "inverse-primary": "#bec6e0",
+                        "background": "#fcf8fa",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed": "#00174b",
+                        "secondary": "#0051d5",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#316bf3",
+                        "on-surface": "#1b1b1d",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container-high": "#eae7e9",
+                        "surface-container-low": "#f6f3f5",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dbe1ff",
+                        "surface-container": "#f0edef",
+                        "surface-tint": "#565e74",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-tertiary-fixed": "#271901",
+                        "surface-container-highest": "#e4e2e4",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-primary-container": "#7c839b",
+                        "surface-bright": "#fcf8fa",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface-variant": "#45464d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "margin-desktop": "32px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "headline-xl": ["Inter", "sans-serif"],
+                        "headline-xl-mobile": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface border-b border-outline-variant shadow-sm sticky top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-bold text-primary">FleetFlow</span>
+</div>
+<nav class="hidden md:flex gap-md items-center">
+<!-- Navigation items (None are active on Landing Page based on intent) -->
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Fleet</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Reservations</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="p-xs text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-all duration-200 rounded-full scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A clean, minimalist 32x32 pixel user avatar placeholder in light mode, featuring a simple geometric silhouette against a pristine white background, conveying a professional SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE_5RSXLl8ge_3XqUjs7AJAvJSK0_2fQqc5wp2n8O1lVOJFyImPOg1RlH2vNiPJulI0GObNe9ycGX1Y9JwFI5868F12cr9CbN4jCFZjfmZvd3hJ6LCSKsno1xFFebIDBPtZfEw0gpe93TTktcPe4hoqWOtBcXaMKoNIBHpOtEhfIaUfBk42WWN5hglclp5UAd1zZbfEQZNiTzh9GIhWvj14G_0X1_uT9V2QHAp0Q1BpPP9NX5BU-qlVviQg0yhN_LyCMKEs01oO2A"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex flex-col w-full">
+<!-- Hero Section -->
+<section class="w-full relative bg-surface-container-lowest pt-xl pb-lg px-margin-mobile md:px-margin-desktop flex flex-col items-center text-center overflow-hidden">
+<!-- Subtle background decorative element -->
+<div class="absolute top-0 inset-x-0 h-full bg-gradient-to-b from-surface-container-high/30 to-transparent pointer-events-none"></div>
+<div class="max-w-3xl z-10 flex flex-col items-center gap-md mt-lg">
+<h1 class="font-headline-xl text-headline-xl text-on-surface md:font-headline-xl md:text-headline-xl font-headline-xl-mobile text-headline-xl-mobile leading-tight tracking-tight">
+                    Rent Premium Cars in Minutes
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Affordable. Verified. Instant booking. Experience seamless mobility designed for modern professionals.
+                </p>
+<div class="flex flex-col sm:flex-row gap-sm mt-md w-full sm:w-auto">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-lg py-sm rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap">
+                        Browse Cars
+                    </button>
+<button class="bg-transparent border border-outline text-primary font-label-md text-label-md px-lg py-sm rounded-xl hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                        Check Availability
+                    </button>
+</div>
+</div>
+<!-- Quick Search Widget (Bento-style floating card) -->
+<div class="mt-xl z-20 w-full max-w-4xl bg-surface rounded-xl shadow-[0_4px_6px_-1px_rgb(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] border border-surface-variant p-md">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md items-end">
+<!-- Pickup Date -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-xs">Pickup Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-[20px]">calendar_today</span>
+<input class="w-full pl-lg pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" type="date" value="2024-05-15"/>
+</div>
+</div>
+<!-- Return Date -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-xs">Return Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-[20px]">event</span>
+<input class="w-full pl-lg pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" type="date" value="2024-05-18"/>
+</div>
+</div>
+<!-- Car Type -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-xs">Car Type</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline text-[20px]">directions_car</span>
+<select class="w-full pl-lg pr-sm py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-body-sm text-body-sm text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all appearance-none">
+<option>All Categories</option>
+<option>Luxury Sedan</option>
+<option>Premium SUV</option>
+<option>Electric</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-outline text-[20px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Search Action -->
+<button class="bg-secondary text-on-secondary font-label-md text-label-md h-[42px] rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">search</span>
+                        Search
+                    </button>
+</div>
+</div>
+</section>
+<!-- Featured Cars Section -->
+<section class="w-full max-w-container-max mx-auto py-xl px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Featured Vehicles</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Curated selection for your next journey.</p>
+</div>
+<a class="hidden md:flex items-center gap-xs text-secondary font-label-sm text-label-sm hover:underline" href="#">
+                    View full fleet <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Horizontal Scroll Container -->
+<div class="flex overflow-x-auto gap-gutter snap-x snap-mandatory no-scrollbar pb-sm">
+<!-- Card 1: Luxury -->
+<div class="min-w-[300px] md:min-w-[350px] snap-start bg-surface rounded-xl border border-surface-variant shadow-[0_4px_6px_-1px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col group hover:shadow-[0_8px_12px_-2px_rgb(0,0,0,0.1)] transition-shadow duration-300">
+<div class="h-48 w-full relative bg-surface-container-low overflow-hidden">
+<img alt="Luxury Sedan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-resolution, professionally lit studio photograph of a sleek, modern black luxury sedan. The car is positioned on a pristine white floor with soft, diffuse lighting highlighting its aerodynamic curves and premium finish. The overall aesthetic is clean, sophisticated, and suitable for a high-end SaaS platform in light mode." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrXku4ubo4QlcacEHvo_yNqKmY5rusF3HyoLm9FexLICCCjGOZd-Ty3RsWXeR2Q3eopTMOm3n4S2AxFnZMfYuuUQ5Edlcgbfr3bmo2T5ukk5eeedeufljd4j24G-3ZJiDFcgVGdtKXQTnU49O5rzSbRtq8XWZCEM3ZjdNBO0tSrK8raPU1dj1oU9c6uro_L03ZkGJj1lrDa0lhY6ewe3JyTX37H8o9WL7HYo5mVJIKkzDvdSp1640OA-0hga7Zua5Dbu2LBr_9dlg"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm px-xs py-[2px] rounded-DEFAULT border border-outline-variant/50 flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[14px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface">4.9</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[20px]">Executive Sedan</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mercedes S-Class or similar</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary text-[18px]">$120</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">/ day</p>
+</div>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm border-t border-surface-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span class="font-label-sm text-label-sm">4</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">work</span>
+<span class="font-label-sm text-label-sm">3</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">settings</span>
+<span class="font-label-sm text-label-sm">Auto</span>
+</div>
+</div>
+<button class="w-full mt-md bg-surface-container-highest text-on-surface font-label-md text-label-md py-sm rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+<!-- Card 2: SUV -->
+<div class="min-w-[300px] md:min-w-[350px] snap-start bg-surface rounded-xl border border-surface-variant shadow-[0_4px_6px_-1px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col group hover:shadow-[0_8px_12px_-2px_rgb(0,0,0,0.1)] transition-shadow duration-300">
+<div class="h-48 w-full relative bg-surface-container-low overflow-hidden">
+<img alt="Premium SUV" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A crisp, high-fidelity studio shot of a modern, premium white SUV. The lighting is bright and even, casting soft shadows on a minimalist light-grey seamless background. The image conveys reliability, spaciousness, and modern engineering, perfectly fitting a sophisticated car rental interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbRShrho6eclRZ2Zie3iwwmk6m01OA6u8GjU9v8FMuRrgAmkpn7qz3co5V4qBcangsldNbuFRw2DfpCr9SuTbWqJt5G9CNt92aDFUzFITx09YwxrZ25oHsbGGoPw4azcgbCcAdEN3UiYeeGLmpJg0ubbYecnfItyJNOkrGX29aGQUgn3u5BUEZgEbahyRWcCiMdvY9ZGMieXTAr5Z-EupPi_LshFLh5tkKdadwYn_fGZtp9p379AeShYCjI1N-vVMBIXR_uRqi61M"/>
+<div class="absolute top-sm right-sm bg-surface/90 backdrop-blur-sm px-xs py-[2px] rounded-DEFAULT border border-outline-variant/50 flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[14px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface">4.8</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[20px]">Premium SUV</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Range Rover Velar or similar</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary text-[18px]">$150</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">/ day</p>
+</div>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm border-t border-surface-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">group</span>
+<span class="font-label-sm text-label-sm">5</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">work</span>
+<span class="font-label-sm text-label-sm">5</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">ac_unit</span>
+<span class="font-label-sm text-label-sm">A/C</span>
+</div>
+</div>
+<button class="w-full mt-md bg-surface-container-highest text-on-surface font-label-md text-label-md py-sm rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+<!-- Card 3: Electric -->
+<div class="min-w-[300px] md:min-w-[350px] snap-start bg-surface rounded-xl border border-surface-variant shadow-[0_4px_6px_-1px_rgb(0,0,0,0.05)] overflow-hidden flex flex-col group hover:shadow-[0_8px_12px_-2px_rgb(0,0,0,0.1)] transition-shadow duration-300">
+<div class="h-48 w-full relative bg-surface-container-low overflow-hidden">
+<img alt="Electric Sedan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An immaculate, high-key studio image of a futuristic electric sports sedan in metallic silver. The lighting creates striking reflections along the vehicle's bodywork against a pure white background. The aesthetic emphasizes clean energy, cutting-edge technology, and premium SaaS design sensibilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvzA67LxaQqSEpc8UEBdzW03fCVQ4ng06oe0YkPBm1tso1Cmi8Y9txVayKye59wiJVOmR-yo5AyhvnvfDt3aYRALxb8hy9gfLtb4zhncV7PZkVjzSkWjQ1eOaCPhCduT-Oqfzb1p-HlseMgXsnAaKpMoqM-dRXy1D_VE0xlSQIG4B3gxob65Hp6dcRhmuBhV8icF_236zEQ1oqlyWLkvksAh1Yy_4MszcRVWJxM7PyKqPVksUcSAdQcWiqB_-TYmjfm-CLaoPys28"/>
+<div class="absolute top-sm left-sm bg-secondary/10 px-xs py-[2px] rounded-DEFAULT border border-secondary/20 flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[14px] text-secondary">bolt</span>
+<span class="font-label-sm text-label-sm text-secondary">Electric</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[20px]">Electric Performance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tesla Model S or similar</p>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-headline-md text-primary text-[18px]">$135</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">/ day</p>
+</div>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm border-t border-surface-variant">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">battery_charging_full</span>
+<span class="font-label-sm text-label-sm">400mi</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">speed</span>
+<span class="font-label-sm text-label-sm">0-60 in 3s</span>
+</div>
+</div>
+<button class="w-full mt-md bg-surface-container-highest text-on-surface font-label-md text-label-md py-sm rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                            Book Now
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Benefits Section (Bento Grid Style) -->
+<section class="w-full bg-surface-container-lowest py-xl">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-lg max-w-2xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Why Choose FleetFlow?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">We've engineered every aspect of our service to provide a frictionless, premium rental experience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Benefit 1 -->
+<div class="bg-surface rounded-xl p-md border border-surface-variant flex flex-col items-start hover:border-secondary-fixed-dim transition-colors">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-sm text-secondary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[18px] mb-xs">Verified Cars</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every vehicle undergoes a strict 50-point inspection before it reaches our platform.</p>
+</div>
+<!-- Benefit 2 -->
+<div class="bg-surface rounded-xl p-md border border-surface-variant flex flex-col items-start hover:border-secondary-fixed-dim transition-colors">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-sm text-secondary">
+<span class="material-symbols-outlined">flash_on</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[18px] mb-xs">Instant Booking</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">No waiting for approvals. Book your car instantly and securely in just a few taps.</p>
+</div>
+<!-- Benefit 3 -->
+<div class="bg-surface rounded-xl p-md border border-surface-variant flex flex-col items-start hover:border-secondary-fixed-dim transition-colors">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-sm text-secondary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[18px] mb-xs">Transparent Pricing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">What you see is what you pay. Zero hidden fees, clear deposit terms, and simple invoices.</p>
+</div>
+<!-- Benefit 4 -->
+<div class="bg-surface rounded-xl p-md border border-surface-variant flex flex-col items-start hover:border-secondary-fixed-dim transition-colors">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-sm text-secondary">
+<span class="material-symbols-outlined">support_agent</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[18px] mb-xs">24/7 Support</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Our dedicated concierge team is available around the clock to assist with your journey.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="w-full max-w-container-max mx-auto py-xl px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg text-on-surface text-center mb-lg">What Our Clients Say</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-low rounded-xl p-md flex flex-col relative">
+<span class="material-symbols-outlined absolute top-md right-md text-outline-variant opacity-30 text-[48px]">format_quote</span>
+<div class="flex items-center gap-sm mb-md z-10">
+<img alt="Sarah J." class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a business executive in their 40s, smiling warmly. The photo is well-lit with a soft, neutral light-grey background, conveying trust and reliability suitable for a premium corporate service testimonial." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPB9HV5je89bYo2MHmdBv66dqjK3KEUgg6Z9eHUZWtRsBYP1eTzWwwckG_ueJa2CCZC7U8xisArOi4FLSzSxSiYv1tuekXL3IS8w8N0SUvbWh02MIpUhSPBiTGUSOg8ZVtAMY-8zGwQBJGtlGyBoa77uRIZhJoGh8bxT5PBsAQlGo4Vgwi3kYvtOB8zDDkMPmqE5tNhWAdjDTZU744O6IphvprQgYCvcDecppMFJ7RXmcKgLHTi5BOsbBOBjAdBY-KFePndoJ2iq8"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Sarah J.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Corporate Director</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic z-10">"The fastest rental experience I've ever had. The car was immaculate and the process was entirely frictionless. FleetFlow is my new standard for business travel."</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-md flex flex-col relative">
+<span class="material-symbols-outlined absolute top-md right-md text-outline-variant opacity-30 text-[48px]">format_quote</span>
+<div class="flex items-center gap-sm mb-md z-10">
+<img alt="Michael T." class="w-12 h-12 rounded-full object-cover" data-alt="A bright, cheerful portrait of a young professional in their late 20s, dressed in smart-casual attire. The lighting is natural and vibrant, set against a clean white studio background, fitting the modern aesthetic of a high-end tech platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwxpDOFL1DexCHxWiJtd0SlFc0a_Lj2MJ0wRWUZxxXzm0YTkAD4zVh7zi07nM1TtxOI7NB2yqW5jenGg6XD2xYxzt_CSauKe7AUPMJGBUWcvk8a5A2B7kN9lDoTfgMyMns0vI5WL0Jyowa-9QGDc_xLJzL9TwNHNAkfNsv4qJDsOAoJ9Ib8oJgKeb1fJdcdD0i-3Fo8BOh7LYQUF3mfESPAfGXH9e3am8l4JVhcVBYmrSyBhSaFSO2eT_SpaWth9-maolla7SnPbo"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Michael T.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Creative Director</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic z-10">"Transparent pricing actually means transparent here. No surprises at the counter. The app interface is beautiful and intuitive. Highly recommended."</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-md flex flex-col relative hidden md:flex">
+<span class="material-symbols-outlined absolute top-md right-md text-outline-variant opacity-30 text-[48px]">format_quote</span>
+<div class="flex items-center gap-sm mb-md z-10">
+<img alt="Elena R." class="w-12 h-12 rounded-full object-cover" data-alt="A sophisticated headshot of an elegant woman in her 50s, projecting confidence and authority. Shot with high-key lighting against a pure white backdrop, the image embodies the premium, executive level of service expected from a luxury car rental brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT2YtGAEJ0iieMGZ8NVlBgL1bI76K3LnROQRKuNqXkX6ZBDUtTnGhOc-dDkTK2393_8vyzrBCKAkecoXt2Za1fRPYg1qbmluFJrdjXltj4FefQAwTS6HT_Vn7TGzX0LZZ4m8jhZRlPfN93R2DtOrfBgMCbTVZtEdoZZuKmWz-nzNgrUcwt8GVZ-qkWl4tuDtT_BZizJ-5EE8W1T90iiV60tuLF9Pf2DbZlM3EHr83VVRKp1mYw_euMN1M6_zlbRBCgyVyrBpQI3ZA"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Elena R.</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Entrepreneur</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic z-10">"I needed a premium SUV at the last minute. FleetFlow delivered flawlessly. The vehicle quality was exceptional, exactly as pictured in the app."</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+<div class="flex flex-col gap-sm">
+<span class="font-headline-md text-headline-md font-bold text-primary">FleetFlow</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-80 mt-xs">
+                © 2024 FleetFlow. Premium Car Rentals.
+            </p>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md text-on-surface mb-xs">Company</h4>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">About Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md text-on-surface mb-xs">Legal</h4>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md text-on-surface mb-xs">Help</h4>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100 transition-opacity" href="#">Support Center</a>
+</div>
+</footer>
+</body></html>

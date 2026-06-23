@@ -1,0 +1,111 @@
+<!-- src/pages/vehicles.html -->
+<div class="container py-8">
+  <div class="section-header">
+    <div>
+      <h1 class="section-title">Our Premium Fleet</h1>
+      <p class="section-subtitle">Select from 12+ top-tier vehicles available for rental</p>
+    </div>
+  </div>
+
+  <div class="catalog-layout">
+    <!-- Filter Sidebar -->
+    <aside class="filter-sidebar">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="form-label m-0" style="font-size: var(--font-size-base);">Filters</h3>
+        <button id="btn-clear-filters" class="btn btn-ghost btn-sm" style="padding: 0;">Clear All</button>
+      </div>
+
+      <!-- Search Filter -->
+      <div class="filter-section">
+        <h4 class="filter-title">Search</h4>
+        <div class="search-bar">
+          <input type="text" id="filter-search" placeholder="Model, brand..." />
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="filter-section">
+        <h4 class="filter-title">Category</h4>
+        <div class="filter-options" id="filter-categories">
+          <label class="checkbox-label">
+            <input type="checkbox" value="Luxury" class="filter-category-checkbox" /> Luxury
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" value="SUV" class="filter-category-checkbox" /> SUVs
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" value="Electric" class="filter-category-checkbox" /> Electric / Hybrid
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" value="Sedan" class="filter-category-checkbox" /> Sedans
+          </label>
+        </div>
+      </div>
+
+      <!-- Transmission Filter -->
+      <div class="filter-section">
+        <h4 class="filter-title">Transmission</h4>
+        <div class="filter-options" id="filter-transmissions">
+          <label class="checkbox-label">
+            <input type="checkbox" value="Automatic" class="filter-trans-checkbox" /> Automatic
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" value="Manual" class="filter-trans-checkbox" /> Manual
+          </label>
+        </div>
+      </div>
+
+      <!-- Price Range Filter -->
+      <div class="filter-section">
+        <h4 class="filter-title">Daily Rate</h4>
+        <div class="flex gap-2 items-center mt-2">
+          <div class="form-group flex-1">
+            <input type="number" id="filter-price-min" placeholder="Min" class="form-input" style="padding: var(--space-2);" />
+          </div>
+          <span class="form-label" style="opacity: 0.6;">-</span>
+          <div class="form-group flex-1">
+            <input type="number" id="filter-price-max" placeholder="Max" class="form-input" style="padding: var(--space-2);" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Availability Filter -->
+      <div class="filter-section">
+        <h4 class="filter-title">Availability</h4>
+        <div class="filter-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="filter-available-only" /> Show Available Only
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Vehicles List Grid -->
+    <div>
+      <div class="flex justify-between items-center mb-6">
+        <span class="form-label m-0" style="color: var(--color-muted);" id="vehicles-count-label">Showing 0 vehicles</span>
+        <div class="form-group" style="flex-direction: row; align-items: center; gap: var(--space-2);">
+          <span class="form-label m-0" style="font-size: var(--font-size-xs);">Sort by</span>
+          <select id="sort-selector" class="form-select" style="padding: var(--space-2); font-size: var(--font-size-xs); width: 140px; border-radius: var(--radius-md);">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Alphabetical</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid-layout" id="catalog-vehicles-grid">
+        <!-- Injected cards -->
+        <div class="col-span-12 loading-center">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="catalog-pagination">
+        <!-- Dynamic page numbers -->
+      </div>
+    </div>
+  </div>
+</div>

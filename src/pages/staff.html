@@ -1,0 +1,150 @@
+<!-- src/pages/staff.html -->
+<div class="container py-8">
+  <div class="section-header">
+    <div>
+      <h1 class="section-title">Staff Portal</h1>
+      <p class="section-subtitle">Manage bookings and search customer records</p>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <button class="sidebar-link active" id="staff-tab-bookings">
+        📋 Manage Bookings
+      </button>
+      <button class="sidebar-link" id="staff-tab-customers">
+        👥 Customer Directory
+      </button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="dashboard-main flex flex-col gap-8">
+      
+      <!-- Panel 1: Bookings Management -->
+      <div id="panel-staff-bookings" class="tab-panel active">
+        <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+          <h3 class="m-0">Global Bookings List</h3>
+          <div class="form-group" style="flex-direction: row; align-items: center; gap: var(--space-2);">
+            <label for="staff-booking-status-filter" class="form-label m-0" style="font-size: var(--font-size-xs);">Status Filter</label>
+            <select id="staff-booking-status-filter" class="form-select" style="padding: var(--space-2); font-size: var(--font-size-xs); width: 140px; border-radius: var(--radius-md);">
+              <option value="ALL">All Statuses</option>
+              <option value="PENDING">Pending</option>
+              <option value="CONFIRMED">Confirmed</option>
+              <option value="CANCELLED">Cancelled</option>
+              <option value="COMPLETED">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="staff-bookings-table-wrapper">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Ref</th>
+                  <th>Customer</th>
+                  <th>Vehicle</th>
+                  <th>Dates</th>
+                  <th>Total Amount</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="staff-bookings-tbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="staff-bookings-empty" class="empty-state" style="display: none;">
+          <div class="empty-icon">📋</div>
+          <h3>No Bookings Found</h3>
+          <p>No customer bookings matching the filter have been logged yet.</p>
+        </div>
+      </div>
+
+      <!-- Panel 2: Customer Directory -->
+      <div id="panel-staff-customers" class="tab-panel">
+        <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+          <h3 class="m-0">Search Customer Directory</h3>
+          <div class="search-bar" style="max-width: 320px; width: 100%;">
+            <input type="text" id="staff-customer-search-input" placeholder="Search by name, email, phone..." />
+          </div>
+        </div>
+
+        <div id="staff-customers-table-wrapper">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Bookings Count</th>
+                  <th>Total Spend</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="staff-customers-tbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="staff-customers-empty" class="empty-state" style="display: none;">
+          <div class="empty-icon">👥</div>
+          <h3>No Customers Found</h3>
+          <p>We couldn't find any customers matching that search term.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Viewing Customer Details & History -->
+<div class="modal-overlay" id="customer-history-modal-overlay">
+  <div class="modal" style="max-width: 800px;">
+    <div class="modal-header">
+      <h3 class="modal-title" id="history-modal-title">Customer History</h3>
+      <button class="modal-close" id="history-modal-close-btn">&times;</button>
+    </div>
+    <div class="flex flex-col gap-6">
+      <div class="grid-layout" style="gap: var(--space-4);">
+        <div class="col-span-4 stat-card">
+          <div class="stat-label">Full Name</div>
+          <div class="stat-value" style="font-size: var(--font-size-lg);" id="hist-cust-name">-</div>
+        </div>
+        <div class="col-span-4 stat-card">
+          <div class="stat-label">Total Spend</div>
+          <div class="stat-value" style="font-size: var(--font-size-lg);" id="hist-cust-spend">$0.00</div>
+        </div>
+        <div class="col-span-4 stat-card">
+          <div class="stat-label">Bookings</div>
+          <div class="stat-value" style="font-size: var(--font-size-lg);" id="hist-cust-count">0 bookings</div>
+        </div>
+      </div>
+
+      <h4>Rental History</h4>
+      <div class="table-wrapper" style="max-height: 300px; overflow-y: auto;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Ref</th>
+              <th>Vehicle</th>
+              <th>Dates</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="hist-cust-tbody">
+            <!-- Injected via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

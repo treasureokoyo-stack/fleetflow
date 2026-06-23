@@ -1,0 +1,134 @@
+<!-- src/pages/dashboard.html -->
+<div class="container py-8">
+  <div class="section-header">
+    <div>
+      <h1 class="section-title">Customer Dashboard</h1>
+      <p class="section-subtitle" id="dashboard-welcome-msg">Welcome back, User</p>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <button class="sidebar-link active" id="sidebar-tab-bookings">
+        📅 My Bookings
+      </button>
+      <button class="sidebar-link" id="sidebar-tab-profile">
+        👤 My Profile
+      </button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="dashboard-main flex flex-col gap-8">
+      
+      <!-- Panel 1: Bookings (Default Panel) -->
+      <div id="panel-bookings" class="tab-panel active">
+        <!-- Stat Cards Section -->
+        <div class="grid-layout mb-8" style="gap: var(--space-4);">
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">📊</div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-value" id="stats-total">0</div>
+          </div>
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">🔄</div>
+            <div class="stat-label">Active Bookings</div>
+            <div class="stat-value" id="stats-active">0</div>
+          </div>
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-label">Completed</div>
+            <div class="stat-value" id="stats-completed">0</div>
+          </div>
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">❌</div>
+            <div class="stat-label">Cancelled</div>
+            <div class="stat-value" id="stats-cancelled">0</div>
+          </div>
+        </div>
+
+        <h3 class="mb-4">Booking History</h3>
+        
+        <div id="bookings-table-container">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Reference</th>
+                  <th>Vehicle</th>
+                  <th>Dates</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="bookings-tbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Empty State for Bookings -->
+        <div id="bookings-empty-state" class="empty-state" style="display: none;">
+          <div class="empty-icon">📅</div>
+          <h3>No Bookings Found</h3>
+          <p>You have not placed any rental bookings yet. Browse our catalogue to get started.</p>
+          <a href="#vehicles" class="btn btn-accent mt-4">Browse Vehicles</a>
+        </div>
+      </div>
+
+      <!-- Panel 2: Profile Settings -->
+      <div id="panel-profile" class="tab-panel">
+        <div class="detail-info" style="max-width: 600px;">
+          <h3 class="mb-6">Account Settings</h3>
+          <form id="profile-update-form" class="flex flex-col gap-4">
+            <div id="profile-alert" class="alert alert-success" style="display: none;">Profile updated successfully.</div>
+            
+            <div class="flex gap-4">
+              <div class="form-group flex-1">
+                <label for="profile-first-name" class="form-label">First Name</label>
+                <input type="text" id="profile-first-name" required class="form-input" />
+              </div>
+              <div class="form-group flex-1">
+                <label for="profile-last-name" class="form-label">Last Name</label>
+                <input type="text" id="profile-last-name" required class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="profile-email" class="form-label">Email Address</label>
+              <input type="email" id="profile-email" disabled class="form-input" style="opacity: 0.6; cursor: not-allowed;" />
+              <span class="form-helper">Email address cannot be changed.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="profile-phone" class="form-label">Phone Number</label>
+              <input type="tel" id="profile-phone" required class="form-input" />
+            </div>
+
+            <div class="spec-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: var(--space-4); border-bottom: none;">
+              <div class="spec-item">
+                <div class="spec-icon">🔑</div>
+                <div class="spec-label">
+                  <span class="spec-label-title">Total Spend</span>
+                  <span class="spec-label-value" id="profile-total-spend">$0.00</span>
+                </div>
+              </div>
+              <div class="spec-item">
+                <div class="spec-icon">🚗</div>
+                <div class="spec-label">
+                  <span class="spec-label-title">Role</span>
+                  <span class="spec-label-value" id="profile-role">CUSTOMER</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Save Changes</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

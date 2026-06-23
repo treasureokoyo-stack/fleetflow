@@ -1,0 +1,122 @@
+<!-- src/pages/vehicle-details.html -->
+<div class="container py-8">
+  <div class="mb-4">
+    <a href="#vehicles" class="btn btn-ghost" style="padding-left: 0;">&larr; Back to Fleet</a>
+  </div>
+
+  <div class="detail-layout" id="vehicle-detail-container">
+    <!-- Left Column: Gallery & Information -->
+    <div class="flex flex-col gap-6">
+      <div class="detail-gallery">
+        <div class="main-image-wrapper">
+          <img id="detail-main-img" src="/vehicle_placeholder.png" alt="Vehicle Image" />
+        </div>
+        <div class="thumbnail-grid" id="detail-thumbnails">
+          <!-- Small images injected here -->
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <div class="flex justify-between items-start mb-2">
+          <div>
+            <h1 class="detail-title" id="detail-name">Tesla Model S</h1>
+            <p id="detail-brand-model" class="form-label" style="color: var(--color-muted); font-size: var(--font-size-lg); margin-top: -8px;">Tesla • Model S</p>
+          </div>
+          <span class="badge" id="detail-status-badge">Available</span>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <div class="spec-icon">⚙️</div>
+            <div class="spec-label">
+              <span class="spec-label-title">Transmission</span>
+              <span class="spec-label-value" id="detail-transmission">Automatic</span>
+            </div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">⛽</div>
+            <div class="spec-label">
+              <span class="spec-label-title">Fuel Type</span>
+              <span class="spec-label-value" id="detail-fuel">Electric</span>
+            </div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">👥</div>
+            <div class="spec-label">
+              <span class="spec-label-title">Seat Count</span>
+              <span class="spec-label-value" id="detail-seats">5 Seats</span>
+            </div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon">🚗</div>
+            <div class="spec-label">
+              <span class="spec-label-title">Year & Class</span>
+              <span class="spec-label-value" id="detail-year-cat">2023 • Luxury</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="mb-3">Description</h3>
+        <p id="detail-description" class="form-label" style="font-weight: 400; line-height: 1.7; color: var(--color-on-surface); opacity: 0.9;">
+          Experience raw performance and extreme comfort with the Tesla Model S. Equipped with an all-electric powertrain, cutting-edge interior technology, and sleek designs.
+        </p>
+
+        <h3 class="mt-8 mb-3">Key Features</h3>
+        <div class="flex flex-wrap gap-2" id="detail-features-tags">
+          <span class="spec-tag">Autopilot</span>
+          <span class="spec-tag">Premium Audio</span>
+          <span class="spec-tag">All-Wheel Drive</span>
+          <span class="spec-tag">Heated Seats</span>
+          <span class="spec-tag">Air Suspension</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Booking Widget -->
+    <div>
+      <div class="booking-widget">
+        <div class="booking-price-header">
+          <div>
+            <span class="booking-cost-breakdown" style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--color-accent); margin: 0; padding: 0;" id="widget-price">$120</span>
+            <span class="form-label m-0" style="color: var(--color-muted); font-size: var(--font-size-sm);">/ daily rate</span>
+          </div>
+          <span class="badge badge-success" id="widget-status-badge">Available</span>
+        </div>
+
+        <!-- Booking Date Selection Form -->
+        <form id="booking-form" class="flex flex-col gap-4">
+          <div class="form-group">
+            <label for="pickup-date" class="form-label">Pick-up Date</label>
+            <input type="date" id="pickup-date" required class="form-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="return-date" class="form-label">Return Date</label>
+            <input type="date" id="return-date" required class="form-input" />
+          </div>
+
+          <!-- Live cost calculation -->
+          <div class="booking-cost-breakdown" id="booking-breakdown" style="display: none;">
+            <div class="cost-row">
+              <span id="breakdown-days-label">$120 x 1 day</span>
+              <span id="breakdown-subtotal">$120.00</span>
+            </div>
+            <div class="cost-row total">
+              <span>Total Amount</span>
+              <span id="breakdown-total">$120.00</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Alerts / Errors -->
+          <div id="booking-error-alert" class="alert alert-error" style="display: none;">
+            This vehicle is unavailable for the selected dates.
+          </div>
+
+          <button type="submit" class="btn btn-accent btn-full btn-lg mt-2" id="btn-submit-booking">
+            Book Vehicle
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

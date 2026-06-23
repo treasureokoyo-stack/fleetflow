@@ -1,0 +1,313 @@
+<!-- src/pages/admin.html -->
+<div class="container py-8">
+  <div class="section-header">
+    <div>
+      <h1 class="section-title">Admin Administration Panel</h1>
+      <p class="section-subtitle">Full access to manage fleet, bookings, system settings and reports</p>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <button class="sidebar-link active" id="admin-tab-reports">
+        📊 System Reports
+      </button>
+      <button class="sidebar-link" id="admin-tab-vehicles">
+        🚗 Manage Vehicles
+      </button>
+      <button class="sidebar-link" id="admin-tab-bookings">
+        📅 Manage Bookings
+      </button>
+      <button class="sidebar-link" id="admin-tab-staff">
+        👥 Manage Staff
+      </button>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="dashboard-main flex flex-col gap-8">
+      
+      <!-- Panel 1: System Reports -->
+      <div id="panel-admin-reports" class="tab-panel active">
+        <!-- Reports Stat Cards -->
+        <div class="grid-layout mb-8" style="gap: var(--space-4);">
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value" id="rep-revenue">$0.00</div>
+          </div>
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">📅</div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-value" id="rep-bookings">0</div>
+          </div>
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-label">Total Customers</div>
+            <div class="stat-value" id="rep-customers">0</div>
+          </div>
+          <div class="col-span-3 stat-card">
+            <div class="stat-icon">🚗</div>
+            <div class="stat-label">Active Vehicles</div>
+            <div class="stat-value" id="rep-vehicles">0</div>
+          </div>
+        </div>
+
+        <h3 class="mb-4">Fleet Status Charts</h3>
+        <div class="grid-layout">
+          <!-- Vehicles by Status chart mockup -->
+          <div class="col-span-6 md-col-span-12 card card-body">
+            <h4 class="mb-4">Vehicles By Status</h4>
+            <div style="height: 220px; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: var(--space-4); border-bottom: 2.5px solid var(--color-border);" id="chart-vehicle-status">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Monthly Revenue chart mockup -->
+          <div class="col-span-6 md-col-span-12 card card-body">
+            <h4 class="mb-4">Monthly Booking Counts</h4>
+            <div style="height: 220px; display: flex; align-items: flex-end; justify-content: space-around; padding-bottom: var(--space-4); border-bottom: 2.5px solid var(--color-border);" id="chart-monthly-bookings">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Manage Vehicles CRUD -->
+      <div id="panel-admin-vehicles" class="tab-panel">
+        <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+          <h3 class="m-0">Fleet Vehicles List</h3>
+          <button id="btn-add-vehicle" class="btn btn-accent">
+            + Create New Vehicle
+          </button>
+        </div>
+
+        <div id="admin-vehicles-table-wrapper">
+          <div class="table-wrapper">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Thumbnail</th>
+                  <th>Vehicle Name</th>
+                  <th>Category</th>
+                  <th>Daily Rate</th>
+                  <th>Status</th>
+                  <th>Mileage</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-vehicles-tbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="admin-vehicles-empty" class="empty-state" style="display: none;">
+          <div class="empty-icon">🚗</div>
+          <h3>No Vehicles Registered</h3>
+          <p>Click "Create New Vehicle" to add a vehicle to the fleet database.</p>
+        </div>
+      </div>
+
+      <!-- Panel 3: Global Bookings Management -->
+      <div id="panel-admin-bookings" class="tab-panel">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="m-0">Global Bookings Control</h3>
+        </div>
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Customer</th>
+                <th>Vehicle</th>
+                <th>Dates</th>
+                <th>Total Cost</th>
+                <th>Status</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-bookings-tbody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Panel 4: Manage Staff Users -->
+      <div id="panel-admin-staff" class="tab-panel">
+        <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+          <h3 class="m-0">Manage Staff Members</h3>
+          <button id="btn-add-staff" class="btn btn-accent">
+            + Register Staff User
+          </button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-staff-tbody">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Add/Edit Vehicle Form -->
+<div class="modal-overlay" id="vehicle-form-modal-overlay">
+  <div class="modal" style="max-width: 600px;">
+    <div class="modal-header">
+      <h3 class="modal-title" id="vehicle-modal-title">Create Vehicle</h3>
+      <button class="modal-close" id="vehicle-modal-close-btn">&times;</button>
+    </div>
+    <form id="vehicle-form" class="flex flex-col gap-4">
+      <input type="hidden" id="vehicle-form-id" />
+      <div id="vehicle-form-error" class="alert alert-error" style="display: none;"></div>
+
+      <div class="form-group">
+        <label for="v-name" class="form-label">Vehicle Name</label>
+        <input type="text" id="v-name" required placeholder="Tesla Model S Plaid" class="form-input" />
+      </div>
+
+      <div class="flex gap-4">
+        <div class="form-group flex-1">
+          <label for="v-brand" class="form-label">Brand</label>
+          <input type="text" id="v-brand" required placeholder="Tesla" class="form-input" />
+        </div>
+        <div class="form-group flex-1">
+          <label for="v-model" class="form-label">Model</label>
+          <input type="text" id="v-model" required placeholder="Model S" class="form-input" />
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="form-group flex-1">
+          <label for="v-year" class="form-label">Year</label>
+          <input type="number" id="v-year" required placeholder="2023" class="form-input" />
+        </div>
+        <div class="form-group flex-1">
+          <label for="v-category" class="form-label">Category</label>
+          <select id="v-category" required class="form-select">
+            <option value="Luxury">Luxury</option>
+            <option value="SUV">SUV</option>
+            <option value="Electric">Electric</option>
+            <option value="Sedan">Sedan</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="form-group flex-1">
+          <label for="v-transmission" class="form-label">Transmission</label>
+          <select id="v-transmission" required class="form-select">
+            <option value="Automatic">Automatic</option>
+            <option value="Manual">Manual</option>
+          </select>
+        </div>
+        <div class="form-group flex-1">
+          <label for="v-seats" class="form-label">Seat Count</label>
+          <input type="number" id="v-seats" required min="1" placeholder="5" class="form-input" />
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="form-group flex-1">
+          <label for="v-rate" class="form-label">Daily Rate ($)</label>
+          <input type="number" id="v-rate" required min="1" placeholder="120" class="form-input" />
+        </div>
+        <div class="form-group flex-1">
+          <label for="v-mileage" class="form-label">Mileage (miles)</label>
+          <input type="number" id="v-mileage" placeholder="12000" class="form-input" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="v-description" class="form-label">Description</label>
+        <textarea id="v-description" rows="3" required placeholder="Enter description details..." class="form-textarea"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="v-image" class="form-label">Thumbnail URL</label>
+        <input type="url" id="v-image" required placeholder="https://example.com/car.jpg" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="v-status" class="form-label">Availability Status</label>
+        <select id="v-status" class="form-select">
+          <option value="AVAILABLE">AVAILABLE</option>
+          <option value="BOOKED">BOOKED</option>
+          <option value="MAINTENANCE">MAINTENANCE</option>
+          <option value="INACTIVE">INACTIVE</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full btn-lg mt-2" id="btn-vehicle-form-submit">
+        Save Vehicle Details
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Add Staff User -->
+<div class="modal-overlay" id="staff-form-modal-overlay">
+  <div class="modal" style="max-width: 500px;">
+    <div class="modal-header">
+      <h3 class="modal-title">Register Staff User</h3>
+      <button class="modal-close" id="staff-modal-close-btn">&times;</button>
+    </div>
+    <form id="staff-form" class="flex flex-col gap-4">
+      <div id="staff-form-error" class="alert alert-error" style="display: none;"></div>
+
+      <div class="flex gap-4">
+        <div class="form-group flex-1">
+          <label for="st-first-name" class="form-label">First Name</label>
+          <input type="text" id="st-first-name" required placeholder="Staff" class="form-input" />
+        </div>
+        <div class="form-group flex-1">
+          <label for="st-last-name" class="form-label">Last Name</label>
+          <input type="text" id="st-last-name" required placeholder="User" class="form-input" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="st-email" class="form-label">Email Address</label>
+        <input type="email" id="st-email" required placeholder="staff@fleetflow.com" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="st-phone" class="form-label">Phone Number</label>
+        <input type="tel" id="st-phone" required placeholder="+1 (555) 012-3456" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="st-password" class="form-label">Password</label>
+        <input type="password" id="st-password" required minlength="8" placeholder="••••••••" class="form-input" />
+      </div>
+
+      <div class="form-group">
+        <label for="st-role" class="form-label">Assigned Role</label>
+        <select id="st-role" class="form-select">
+          <option value="STAFF">STAFF</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-accent btn-full btn-lg mt-2">
+        Register Staff Member
+      </button>
+    </form>
+  </div>
+</div>

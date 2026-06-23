@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FleetFlow — Premium Car Rental & Fleet Management</title>
+  <link rel="stylesheet" href="src/styles/base.css" />
+</head>
+<body>
+  <div class="site-wrapper">
+    <!-- Header/Navigation Shell -->
+    <header class="site-header">
+      <div class="container nav-container">
+        <a href="#" class="logo">
+          Fleet<span class="logo-highlight">Flow</span>
+        </a>
+        <nav class="nav-menu">
+          <a href="#vehicles" class="nav-link">Browse Fleet</a>
+          <a href="#dashboard" class="nav-link" id="nav-dashboard" style="display: none;">My Bookings</a>
+          <a href="#staff" class="nav-link" id="nav-staff" style="display: none;">Staff Panel</a>
+          <a href="#admin" class="nav-link" id="nav-admin" style="display: none;">Admin Panel</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="theme-toggle" aria-label="Toggle theme" class="btn btn-secondary btn-sm">🌙</button>
+          <div id="auth-buttons">
+            <a href="#login" class="btn btn-secondary btn-sm">Login</a>
+            <a href="#register" class="btn btn-accent btn-sm">Sign Up</a>
+          </div>
+          <div id="user-profile" style="display: none;" class="flex items-center gap-3">
+            <span id="user-display-name" class="form-label m-0">User</span>
+            <button id="btn-logout" class="btn btn-secondary btn-sm">Logout</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content App Target -->
+    <main id="app-content">
+      <!-- Dynamic pages will load here -->
+    </main>
+
+    <!-- Footer Shell -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <a href="#" class="logo" style="color: white; margin-bottom: var(--space-4);">
+              Fleet<span class="logo-highlight">Flow</span>
+            </a>
+            <p style="opacity: 0.7; font-size: var(--font-size-sm); margin-top: var(--space-2);">
+              Premium car rentals and enterprise fleet management systems. Experience ultimate luxury and reliability.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+              <a href="#vehicles">Our Vehicles</a>
+              <a href="#login">Client Login</a>
+              <a href="#register">Register Account</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Fleet Categories</h4>
+            <div class="footer-links">
+              <a href="#vehicles?category=luxury">Luxury</a>
+              <a href="#vehicles?category=suv">SUVs</a>
+              <a href="#vehicles?category=electric">Electric / Hybrid</a>
+              <a href="#vehicles?category=sedan">Sedans</a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Contact & Support</h4>
+            <p style="opacity: 0.7; font-size: var(--font-size-sm);">
+              Support: support@fleetflow.com<br>
+              Phone: +1 (555) 019-2834<br>
+              Hours: 24/7 Helpline
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 FleetFlow Inc. All rights reserved.</p>
+          <div class="flex gap-4">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Main script entrypoint -->
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!-- src/pages/home.html -->
+<section class="hero-section">
+  <div class="container grid-layout items-center">
+    <div class="col-span-6 hero-content">
+      <h1 class="hero-title">Experience Premium Luxury, Simplified</h1>
+      <p class="hero-subtitle">
+        Rent from our curated collection of elite cars. Best-in-class fleet management, effortless booking, and unmatched client service.
+      </p>
+      <div class="flex gap-4">
+        <a href="#vehicles" class="btn btn-accent btn-lg">Explore Vehicles</a>
+        <a href="#register" class="btn btn-secondary btn-lg">Join FleetFlow</a>
+      </div>
+    </div>
+    <div class="col-span-6 md-col-span-12 flex justify-center">
+      <!-- Generated premium design asset -->
+      <img src="/vehicle_placeholder.png" alt="Premium Fleet Car" class="card" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); transform: rotate(2deg); max-height: 380px; width: 100%; object-fit: cover;" id="hero-image" />
+    </div>
+  </div>
+</section>
+
+<section class="featured-section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Featured Fleet</h2>
+        <p class="section-subtitle">Exquisite models selected for top-tier comfort and driving thrill</p>
+      </div>
+      <a href="#vehicles" class="btn btn-ghost">View All Fleet &rarr;</a>
+    </div>
+
+    <!-- Featured vehicles grid -->
+    <div class="grid-layout" id="featured-vehicles-grid">
+      <!-- JavaScript will inject cards here -->
+      <div class="col-span-12 loading-center">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-choose-section">
+  <div class="container">
+    <div class="section-header" style="justify-content: center; text-align: center; margin-bottom: var(--space-12);">
+      <div>
+        <h2 class="section-title">The FleetFlow Advantage</h2>
+        <p class="section-subtitle">Designed to deliver a seamless, high-class vehicle experience</p>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">🚗</div>
+        <h3>Elite Collection</h3>
+        <p>From modern Tesla electric vehicles to executive sedans and SUVs, hand-picked for ultimate luxury.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">🔒</div>
+        <h3>Transparent Booking</h3>
+        <p>No hidden fees or unexpected charges. Complete booking details, dates, and prices visible upfront.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon-wrapper">⚡</div>
+        <h3>24/7 Operations</h3>
+        <p>Dedicated staff and admin tools ensure prompt confirmation and pick-up assistance anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>

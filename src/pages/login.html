@@ -1,0 +1,34 @@
+<!-- src/pages/login.html -->
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <div class="auth-header">
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle">Login to manage bookings and browse fleet</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form" class="flex flex-col gap-4">
+      <div id="login-general-error" class="alert alert-error" style="display: none;"></div>
+
+      <div class="form-group">
+        <label for="login-email" class="form-label">Email Address</label>
+        <input type="email" id="login-email" required placeholder="name@example.com" class="form-input" />
+        <div id="login-email-error" class="form-error" style="display: none;"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="login-password" class="form-label">Password</label>
+        <input type="password" id="login-password" required minlength="8" placeholder="••••••••" class="form-input" />
+        <div id="login-password-error" class="form-error" style="display: none;"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full btn-lg mt-2" id="btn-login-submit">
+        Login Account
+      </button>
+    </form>
+
+    <p class="auth-subtitle mt-6 text-center" style="font-size: var(--font-size-xs);">
+      Don't have an account? <a href="#register" class="form-label" style="color: var(--color-accent); font-size: var(--font-size-xs);">Sign up here</a>
+    </p>
+  </div>
+</div>
