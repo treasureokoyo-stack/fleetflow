@@ -1,0 +1,58 @@
+/* Design tokens */
+:root {
+  /* Colors */
+  --color-primary: #000000;
+  --color-primary-container: #131b2e;
+  --color-on-primary: #ffffff;
+  --color-surface: #fcf8fa;
+  --color-surface-variant: #e4e2e4;
+  --color-outline: #76777d;
+  --color-outline-variant: #c6c6cd;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-background: #fcf8fa;
+  --color-on-background: #1b1b1d;
+  --color-on-surface: #1b1b1d;
+  --color-on-surface-variant: #45464d;
+  /* Spacing */
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  /* Border radius */
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-full: 9999px;
+  /* Typography */
+  --font-inter: 'Inter', sans-serif;
+  --size-headline-lg: 32px;
+  --size-headline-md: 24px;
+  --size-body-lg: 18px;
+  --size-body-md: 16px;
+  --size-body-sm: 14px;
+  --size-label-lg: 14px;
+  --size-label-sm: 12px;
+}
+
+/* Utility classes */
+body {font-family: var(--font-inter); background: var(--color-background); color: var(--color-on-background); margin: 0;}
+.container {max-width: var(--spacing-xl); margin: 0 auto; padding: var(--spacing-md);}
+.flex {display: flex;}
+.flex-col {flex-direction: column;}
+.justify-center {justify-content: center;}
+.items-center {align-items: center;}
+.gap-sm {gap: var(--spacing-sm);}
+.gap-md {gap: var(--spacing-md);}
+.rounded-xl {border-radius: var(--radius-lg);}
+.btn-primary {background: var(--color-primary-container); color: var(--color-on-primary); border: none; padding: var(--spacing-sm) var(--spacing-lg); cursor: pointer;}
+.input-field {border: 1px solid var(--color-outline-variant); padding: var(--spacing-sm); border-radius: var(--radius-md); width: 100%;}
+.header {display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md); background: var(--color-surface-variant);}
+.theme-btn {background: none; border: none; cursor: pointer; font-size: 1.5rem;}
+
+/* Dark mode */
+html.dark {
+  --color-background: #303032;
+  --color-surface: #303032;
+  --color-on-background: #f3f0f2;
+  --color-on-surface: #f3f0f2;
+}

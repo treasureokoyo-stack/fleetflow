@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign In - FleetFlow</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS with Theme Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-container": "#f0edef",
+                            "on-error-container": "#93000a",
+                            "tertiary": "#000000",
+                            "outline-variant": "#c6c6cd",
+                            "tertiary-fixed": "#fcdeb5",
+                            "on-primary-container": "#7c839b",
+                            "on-error": "#ffffff",
+                            "primary-container": "#131b2e",
+                            "on-background": "#1b1b1d",
+                            "secondary-fixed-dim": "#b4c5ff",
+                            "secondary-container": "#316bf3",
+                            "on-tertiary-fixed-variant": "#574425",
+                            "on-secondary": "#ffffff",
+                            "outline": "#76777d",
+                            "on-primary": "#ffffff",
+                            "background": "#fcf8fa",
+                            "primary-fixed": "#dae2fd",
+                            "on-secondary-fixed": "#00174b",
+                            "surface": "#fcf8fa",
+                            "on-primary-fixed-variant": "#3f465c",
+                            "on-tertiary": "#ffffff",
+                            "on-secondary-container": "#fefcff",
+                            "surface-tint": "#565e74",
+                            "on-primary-fixed": "#131b2e",
+                            "on-surface": "#1b1b1d",
+                            "tertiary-fixed-dim": "#dec29a",
+                            "on-secondary-fixed-variant": "#003ea8",
+                            "tertiary-container": "#271901",
+                            "surface-variant": "#e4e2e4",
+                            "error": "#ba1a1a",
+                            "surface-dim": "#dcd9db",
+                            "surface-container-lowest": "#ffffff",
+                            "on-surface-variant": "#45464d",
+                            "on-tertiary-container": "#98805d",
+                            "surface-container-low": "#f6f3f5",
+                            "primary-fixed-dim": "#bec6e0",
+                            "inverse-on-surface": "#f3f0f2",
+                            "surface-container-high": "#eae7e9",
+                            "primary": "#000000",
+                            "surface-bright": "#fcf8fa",
+                            "error-container": "#ffdad6",
+                            "inverse-surface": "#303032",
+                            "surface-container-highest": "#e4e2e4",
+                            "on-tertiary-fixed": "#271901",
+                            "secondary": "#0051d5",
+                            "inverse-primary": "#bec6e0",
+                            "secondary-fixed": "#dbe1ff"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "sm": "12px",
+                            "gutter": "24px",
+                            "xs": "4px",
+                            "lg": "48px",
+                            "md": "24px",
+                            "xl": "80px",
+                            "container-max": "1280px",
+                            "margin-desktop": "32px",
+                            "margin-mobile": "16px",
+                            "base": "8px"
+                    },
+                    "fontFamily": {
+                            "headline-lg": ["Inter"],
+                            "body-md": ["Inter"],
+                            "label-md": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "headline-xl-mobile": ["Inter"],
+                            "label-sm": ["Inter"],
+                            "headline-xl": ["Inter"],
+                            "body-sm": ["Inter"],
+                            "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                            "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                            "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                            "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                            "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="h-screen w-full flex bg-surface-container-lowest font-body-md text-on-surface antialiased overflow-hidden">
+<!-- Left Split: Image & Brand Welcome (Hidden on Mobile) -->
+<div class="hidden lg:flex w-1/2 relative bg-surface-variant flex-col justify-between items-start overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A sleek, modern luxury car parked in an expansive, pristine architectural space. The environment features clean white surfaces, subtle tonal lighting, and a refined premium aesthetic. The scene is brightly lit, emphasizing the high-fidelity details of the vehicle and the sophisticated, airy modern SaaS vibe. Deep navy and crisp white tones dominate the balanced composition." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-2YeAdO9N8FxBwiwbgJm5y_8P5ke-Rz_bvlNIRls9FUvrp9pQ0EVZZTTwat_3xmcUuA361MYyF5tR06MjKZNfhQAeJL_pQiN8D0iMtLaDeBy182ROJHUioKun99-Z5iqxmfF5xITXpH1O6trUBu7P12s1x1gYVR8RiXfLco8fXSevqlJqE3ywhAoK0vgDU-Vox3myXqluYdxFyBZ5a0IK2x2biqtGFBFN7HI7nWQ3JGksXg7t3P0UGPuq1JGg9NLVGbjYycG2eMQ')">
+</div>
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-primary-container/20 to-transparent"></div>
+<!-- Brand Identifier Top Left -->
+<div class="relative z-10 p-margin-desktop w-full flex items-center gap-xs text-on-primary">
+<span class="material-symbols-outlined" style="font-size: 28px; font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="font-headline-md text-headline-md tracking-tight">FleetFlow</span>
+</div>
+<!-- Welcome Message Bottom Left -->
+<div class="relative z-10 p-margin-desktop w-full text-on-primary max-w-lg mb-xl">
+<h1 class="font-headline-xl text-headline-xl mb-sm text-on-primary drop-shadow-md">Welcome Back</h1>
+<p class="font-body-lg text-body-lg text-on-primary/90">Continue your journey with FleetFlow. Access your premium fleet and manage your rentals with seamless precision.</p>
+</div>
+</div>
+<!-- Right Split: Sign In Form -->
+<div class="w-full lg:w-1/2 flex items-center justify-center bg-surface-container-lowest overflow-y-auto px-margin-mobile md:px-margin-desktop relative">
+<!-- Mobile Logo (Visible only on mobile/tablet) -->
+<div class="absolute top-0 left-0 p-margin-mobile lg:hidden flex items-center gap-xs text-primary-container">
+<span class="material-symbols-outlined" style="font-size: 24px; font-variation-settings: 'FILL' 1;">directions_car</span>
+<span class="font-headline-md text-headline-md tracking-tight">FleetFlow</span>
+</div>
+<div class="w-full max-w-md flex flex-col gap-lg py-xl">
+<!-- Form Header -->
+<div class="flex flex-col gap-sm text-center lg:text-left">
+<h2 class="font-headline-lg-mobile lg:font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface">Sign In</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Enter your credentials to access your account.</p>
+</div>
+<!-- The Form -->
+<form class="flex flex-col gap-md" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant pl-1" for="email">Email Address</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 text-outline">
+<span class="material-symbols-outlined" style="font-size: 20px;">mail</span>
+</span>
+<input class="w-full pl-12 pr-4 py-3 bg-transparent border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-2 focus:ring-secondary/30 outline-none transition-all duration-200" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant pl-1" for="password">Password</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 text-outline">
+<span class="material-symbols-outlined" style="font-size: 20px;">lock</span>
+</span>
+<input class="w-full pl-12 pr-4 py-3 bg-transparent border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface placeholder:text-outline focus:border-secondary focus:ring-2 focus:ring-secondary/30 outline-none transition-all duration-200" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Actions Row -->
+<div class="flex justify-end items-center mt-[-8px]">
+<a class="font-label-sm text-label-sm text-secondary hover:text-on-secondary-fixed-variant transition-colors" href="#">Forgot Password?</a>
+</div>
+<!-- Primary Button -->
+<button class="w-full bg-primary-container text-on-primary py-4 rounded-xl font-label-md text-label-md flex items-center justify-center gap-sm hover:opacity-90 transition-opacity mt-sm shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),_0_2px_4px_-2px_rgba(0,0,0,0.1)] hover:shadow-[0_6px_8px_-1px_rgba(0,0,0,0.15),_0_4px_6px_-2px_rgba(0,0,0,0.1)] active:translate-y-[1px]" type="submit">
+                    Sign In
+                    <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</form>
+<!-- Footer Link -->
+<div class="text-center mt-sm">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="font-label-md text-label-md text-secondary hover:text-on-secondary-fixed-variant transition-colors" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

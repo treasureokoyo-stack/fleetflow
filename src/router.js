@@ -8,14 +8,30 @@ import { renderLogin, renderRegister } from "./scripts/auth.js";
 import { renderDashboard } from "./scripts/dashboard.js";
 import { renderStaff } from "./scripts/staff.js";
 import { renderAdmin } from "./scripts/admin.js";
+import { renderMyBookings } from "./scripts/myBookings.js";
 
 const routes = {
+  "#sign_in_fleetflow": { template: "src/pages/sign_in_fleetflow.html", init: null },
+  "#sign_up_fleetflow": { template: "src/pages/sign_up_fleetflow.html", init: null },
+  "#browse_fleet_fleetflow": { template: "src/pages/browse_fleet_fleetflow.html", init: renderVehicles },
+  "#fleet_management_fleetflow_admin": { template: "src/pages/fleet_management_fleetflow_admin.html", init: null },
+  "#fleet_management_with_availability_calendar_fleetflow_admin": { template: "src/pages/fleet_management_with_availability_calendar_fleetflow_admin.html", init: null },
+  "#admin_overview_fleetflow": { template: "src/pages/admin_overview_fleetflow.html", init: null },
+  "#admin_sign_in_fleetflow": { template: "src/pages/admin_sign_in_fleetflow.html", init: null },
+  "#booking_management_fleetflow_admin": { template: "src/pages/booking_management_fleetflow_admin.html", init: null },
+  "#my_bookings_fleetflow_dashboard": { template: "src/pages/my_bookings_fleetflow_dashboard.html", init: renderMyBookings },
+  "#settings_fleetflow_admin": { template: "src/pages/settings_fleetflow_admin.html", init: null },
+  "#account_settings_fleetflow": { template: "src/pages/account_settings_fleetflow.html", init: null },
+  "#support_center_fleetflow": { template: "src/pages/support_center_fleetflow.html", init: null },
+  "#fleetflow_rent_premium_cars": { template: "src/pages/fleetflow_rent_premium_cars.html", init: null },
+  "#tesla_model_s_fleetflow_details": { template: "src/pages/tesla_model_s_fleetflow_details.html", init: null },
+  "#complete_your_booking_fleetflow": { template: "src/pages/complete_your_booking_fleetflow.html", init: null },
+  "#dashboard": { template: "src/pages/dashboard.html", init: renderDashboard, secure: "CUSTOMER" },
   "": { template: "src/pages/home.html", init: renderHome },
   "#vehicles": { template: "src/pages/vehicles.html", init: renderVehicles },
   "#vehicle-details": { template: "src/pages/vehicle-details.html", init: renderVehicleDetails },
   "#login": { template: "src/pages/login.html", init: renderLogin },
   "#register": { template: "src/pages/register.html", init: renderRegister },
-  "#dashboard": { template: "src/pages/dashboard.html", init: renderDashboard, secure: "CUSTOMER" },
   "#staff": { template: "src/pages/staff.html", init: renderStaff, secure: "STAFF" },
   "#admin": { template: "src/pages/admin.html", init: renderAdmin, secure: "ADMIN" }
 };
@@ -25,34 +41,24 @@ export async function initRouter() {
 
   async function loadPage() {
     const fullHash = location.hash || "";
-    // Separate hash path from query parameters
     const [hashPath, queryString] = fullHash.split("?");
     const params = new URLSearchParams(queryString || "");
-
     const route = routes[hashPath] || routes[""];
-    
-    // Check security / role permissions
     if (route.secure) {
       const isAuthorized = await checkAuthRoute(route.secure);
       if (!isAuthorized) {
-        // Redirect to login or show 403 unauthorized page
         location.hash = "#login";
         return;
       }
     }
-
     try {
       const res = await fetch(route.template);
       if (!res.ok) throw new Error("Page not found");
       const html = await res.text();
-      
       const appContent = document.getElementById("app-content");
       if (appContent) {
         appContent.innerHTML = html;
-        // Run page-specific initialization scripts
-        if (route.init) {
-          route.init(params);
-        }
+        if (route.init) route.init(params);
       }
     } catch (err) {
       console.error(err);
@@ -71,8 +77,6 @@ export async function initRouter() {
       }
     }
   }
-
   window.addEventListener("hashchange", loadPage);
-  // Run on initial load
   loadPage();
 }
