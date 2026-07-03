@@ -9,6 +9,8 @@ import { renderDashboard } from "./scripts/dashboard.js";
 import { renderStaff } from "./scripts/staff.js";
 import { renderAdmin } from "./scripts/admin.js";
 import { renderMyBookings } from "./scripts/myBookings.js";
+import { renderBookingCheckout } from "./scripts/bookingCheckout.js";
+import { initLandingPage } from "./scripts/landingPage.js";
 
 const routes = {
   "#sign_in_fleetflow": { template: "src/pages/sign_in_fleetflow.html", init: null },
@@ -23,12 +25,12 @@ const routes = {
   "#settings_fleetflow_admin": { template: "src/pages/settings_fleetflow_admin.html", init: null },
   "#account_settings_fleetflow": { template: "src/pages/account_settings_fleetflow.html", init: null },
   "#support_center_fleetflow": { template: "src/pages/support_center_fleetflow.html", init: null },
-  "#fleetflow_rent_premium_cars": { template: "src/pages/fleetflow_rent_premium_cars.html", init: null },
+  "#fleetflow_rent_premium_cars": { template: "src/pages/fleetflow_rent_premium_cars.html", init: initLandingPage },
   "#tesla_model_s_fleetflow_details": { template: "src/pages/tesla_model_s_fleetflow_details.html", init: null },
-  "#complete_your_booking_fleetflow": { template: "src/pages/complete_your_booking_fleetflow.html", init: null },
+  "#complete_your_booking_fleetflow": { template: "src/pages/complete_your_booking_fleetflow.html", init: renderBookingCheckout },
   "#dashboard": { template: "src/pages/dashboard.html", init: renderDashboard, secure: "CUSTOMER" },
-  "": { template: "src/pages/home.html", init: renderHome },
-  "#vehicles": { template: "src/pages/vehicles.html", init: renderVehicles },
+  "": { template: "src/pages/fleetflow_rent_premium_cars.html", init: initLandingPage },
+  "#vehicles": { template: "src/pages/browse_fleet_fleetflow.html", init: renderVehicles },
   "#vehicle-details": { template: "src/pages/vehicle-details.html", init: renderVehicleDetails },
   "#login": { template: "src/pages/login.html", init: renderLogin },
   "#register": { template: "src/pages/register.html", init: renderRegister },
