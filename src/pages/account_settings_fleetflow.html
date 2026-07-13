@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FleetFlow - Settings</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1b1b1d",
+                        "surface-variant": "#e4e2e4",
+                        "tertiary-fixed": "#fcdeb5",
+                        "secondary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-bright": "#fcf8fa",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "primary-fixed": "#dae2fd",
+                        "surface": "#fcf8fa",
+                        "on-tertiary-fixed": "#271901",
+                        "on-tertiary-container": "#98805d",
+                        "error": "#ba1a1a",
+                        "secondary": "#0051d5",
+                        "outline": "#76777d",
+                        "on-secondary-fixed": "#00174b",
+                        "secondary-container": "#316bf3",
+                        "background": "#fcf8fa",
+                        "surface-container": "#f0edef",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-high": "#eae7e9",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e4e2e4",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "tertiary-container": "#271901",
+                        "inverse-primary": "#bec6e0",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#303032",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#fefcff",
+                        "surface-dim": "#dcd9db",
+                        "on-background": "#1b1b1d",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "margin-desktop": "32px",
+                        "container-max": "1280px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-xl-mobile": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar Shared Component -->
+<nav class="bg-surface border-b border-outline-variant sticky top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto shadow-sm">
+<div class="flex items-center gap-md">
+<a class="font-headline-md text-headline-md font-bold text-primary" href="#">FleetFlow</a>
+</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-3 py-2 rounded-lg" href="#">Fleet</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-3 py-2 rounded-lg" href="#">Reservations</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-3 py-2 rounded-lg" href="#">Support</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all duration-200 scale-95 active:scale-90 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant ml-2 scale-95 active:scale-90 transition-transform">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a confident individual, well-lit in a modern studio setting, serving as a user profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD6s0bVELiIAc8xLzuSEimD03N5OhGZFc2bwaeQLvBrs3z2lmZVhRGQ5zE-HsrUG4rRdZgENmwQBSXJZAy0Y1F-VP5OIpwDHLjAD6y95Hm35UAYLAmzcqkhFMnnx_hLDYB5VjdcjigDc3vWHhm9SQsSQDkZ_QC3Ih336SV52WIsNg5lREsq2nIAJfYbEHIutrqUZm9vCSIRMdlFpVNRnGtGNf-wWLWPHfDCGl1EmGOXGiQ1PpA0Q19hVMulehqkfftmP4H997hlro"/>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-lg">
+<header class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Account Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Manage your personal information, security preferences, and payment details.</p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Left Sidebar Navigation -->
+<aside class="md:col-span-3">
+<nav class="flex flex-col gap-xs sticky top-32">
+<a class="flex items-center gap-sm px-4 py-3 bg-surface-container-high text-primary font-label-md text-label-md rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+                        Profile Info
+                    </a>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                        Login &amp; Security
+                    </a>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+                        Payment Methods
+                    </a>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-label-md text-label-md rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+                        Notification Preferences
+                    </a>
+</nav>
+</aside>
+<!-- Main Settings Canvas -->
+<div class="md:col-span-9 flex flex-col gap-md">
+<!-- Profile Information Card -->
+<section class="bg-surface rounded-xl border border-outline-variant shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.05),_0_2px_4px_-2px_rgb(0_0_0_/_0.05)] overflow-hidden">
+<div class="px-md py-5 border-b border-outline-variant bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md text-on-surface">Profile Information</h2>
+</div>
+<div class="p-md">
+<!-- Avatar Upload -->
+<div class="flex items-center gap-md mb-lg">
+<div class="w-20 h-20 rounded-full overflow-hidden border border-outline-variant bg-surface-container-low flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a confident individual, well-lit in a modern studio setting, serving as a user profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABh_WMUenRZ4oZbGdVdtUOenCKINKzp1rVKeLfs71hF_y-ZLQrZVcqG30x0QWupOjXnZhdcgbqSWq1ibi5VBiY-SmLjt2u4vTR1Rx-xK8slef-js48GNQeLXQmmXW82bjXYbaSOGpwnBWQz6Hj2NY777HCBNTYduP_CsU22s17_mxa5RbYXqlENCMTxmRRv-SQN7_G2YR9gqOjMede9Q2oMl4xM_Cc-P8P3oDGo1HRJhd-BWL1iryOH5wSmaKsjrqsbdby0Ch3tz8"/>
+</div>
+<div>
+<div class="flex gap-sm">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-xl hover:opacity-90 transition-opacity">Change Avatar</button>
+<button class="bg-transparent border border-outline-variant text-on-surface-variant font-label-md text-label-md px-4 py-2 rounded-xl hover:bg-surface-container transition-colors">Remove</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">JPG, GIF or PNG. Max size of 5MB.</p>
+</div>
+</div>
+<!-- Personal Details Form -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">First Name</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-shadow" type="text" value="Eleanor"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Last Name</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-shadow" type="text" value="Vance"/>
+</div>
+<div class="flex flex-col gap-xs md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Email Address</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-shadow" type="email" value="eleanor.vance@example.com"/>
+</div>
+<div class="flex flex-col gap-xs md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Phone Number</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-shadow" type="tel" value="+1 (555) 019-2834"/>
+</div>
+</div>
+</div>
+<div class="px-md py-4 border-t border-outline-variant bg-surface-container-low flex justify-end">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-xl hover:opacity-90 transition-opacity">Save Changes</button>
+</div>
+</section>
+<!-- Driver's License Card -->
+<section class="bg-surface rounded-xl border border-outline-variant shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.05),_0_2px_4px_-2px_rgb(0_0_0_/_0.05)] overflow-hidden">
+<div class="px-md py-5 border-b border-outline-variant bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md text-on-surface">Driver's License</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Required for active vehicle reservations.</p>
+</div>
+<div class="p-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">License Number</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-shadow" type="text" value="DL-987654321"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Issuing State/Country</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-xl px-4 py-3 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-shadow" type="text" value="California, USA"/>
+</div>
+<!-- Upload Area -->
+<div class="md:col-span-2 mt-4">
+<label class="font-label-sm text-label-sm text-on-surface-variant mb-xs block">Document Scan</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center text-center hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors mb-2" data-icon="cloud_upload" style="font-size: 32px;">cloud_upload</span>
+<p class="font-label-md text-label-md text-on-surface">Click to upload or drag and drop</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Front and back scan (PDF, JPG, PNG)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Login & Security Card -->
+<section class="bg-surface rounded-xl border border-outline-variant shadow-[0_4px_6px_-1px_rgb(0_0_0_/_0.05),_0_2px_4px_-2px_rgb(0_0_0_/_0.05)] overflow-hidden">
+<div class="px-md py-5 border-b border-outline-variant bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md text-on-surface">Login &amp; Security</h2>
+</div>
+<div class="p-md flex flex-col gap-lg">
+<!-- Password -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Password</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Last changed 3 months ago.</p>
+</div>
+<button class="bg-transparent border border-outline-variant text-on-surface font-label-md text-label-md px-4 py-2 rounded-xl hover:bg-surface-container transition-colors whitespace-nowrap">Change Password</button>
+</div>
+<hr class="border-outline-variant"/>
+<!-- 2FA -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Two-Factor Authentication (2FA)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Add an extra layer of security to your account.</p>
+</div>
+<!-- Toggle Switch (Stylized Checkbox) -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-secondary rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+<span class="ml-3 font-label-md text-label-md text-on-surface">Enabled</span>
+</label>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full mt-auto">
+<div class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-md text-headline-md font-bold text-primary">FleetFlow</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-4 opacity-80 hover:opacity-100 transition-opacity">© 2024 FleetFlow. Premium Car Rentals.</p>
+</div>
+<div class="col-span-1 md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="flex flex-col gap-3">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">About Us</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-3">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Support Center</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all" href="#">Careers</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -137,19 +137,16 @@
 <!-- TopNavBar (Shared Component) -->
 <header class="bg-surface border-b border-outline-variant shadow-sm sticky top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto">
 <div class="flex items-center gap-md">
-<span class="font-headline-md text-headline-md font-bold text-primary">FleetFlow</span>
+<a href="#" class="font-headline-md text-headline-md font-bold text-primary" style="text-decoration:none">FleetFlow</a>
 </div>
 <nav class="hidden md:flex gap-md items-center">
-<!-- Navigation items (None are active on Landing Page based on intent) -->
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Fleet</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Reservations</a>
-<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Support</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#browse_fleet_fleetflow">Fleet</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#dashboard">Reservations</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md hover:bg-surface-container-high transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#support_center_fleetflow">Support</a>
 </nav>
 <div class="flex items-center gap-sm">
-<button class="p-xs text-on-surface-variant hover:text-secondary hover:bg-surface-container-high transition-all duration-200 rounded-full scale-95 active:scale-90 transition-transform">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A clean, minimalist 32x32 pixel user avatar placeholder in light mode, featuring a simple geometric silhouette against a pristine white background, conveying a professional SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE_5RSXLl8ge_3XqUjs7AJAvJSK0_2fQqc5wp2n8O1lVOJFyImPOg1RlH2vNiPJulI0GObNe9ycGX1Y9JwFI5868F12cr9CbN4jCFZjfmZvd3hJ6LCSKsno1xFFebIDBPtZfEw0gpe93TTktcPe4hoqWOtBcXaMKoNIBHpOtEhfIaUfBk42WWN5hglclp5UAd1zZbfEQZNiTzh9GIhWvj14G_0X1_uT9V2QHAp0Q1BpPP9NX5BU-qlVviQg0yhN_LyCMKEs01oO2A"/>
+<a href="#login" class="px-sm py-xs font-label-md text-label-md bg-surface-container-high text-on-surface rounded-DEFAULT hover:bg-surface-container hover:text-secondary transition-all duration-200" style="text-decoration:none">Sign In</a>
+<a href="#register" class="px-sm py-xs font-label-md text-label-md bg-primary text-on-primary rounded-DEFAULT hover:opacity-90 transition-all duration-200" style="text-decoration:none">Sign Up</a>
 </div>
 </header>
 <!-- Main Canvas -->
@@ -166,12 +163,12 @@
                     Affordable. Verified. Instant booking. Experience seamless mobility designed for modern professionals.
                 </p>
 <div class="flex flex-col sm:flex-row gap-sm mt-md w-full sm:w-auto">
-<button class="bg-primary text-on-primary font-label-md text-label-md px-lg py-sm rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap">
+<a href="#browse_fleet_fleetflow" class="bg-primary text-on-primary font-label-md text-label-md px-lg py-sm rounded-xl hover:opacity-90 transition-opacity whitespace-nowrap text-center" style="text-decoration:none">
                         Browse Cars
-                    </button>
-<button class="bg-transparent border border-outline text-primary font-label-md text-label-md px-lg py-sm rounded-xl hover:bg-surface-container-low transition-colors whitespace-nowrap">
+                    </a>
+<a href="#browse_fleet_fleetflow" class="bg-transparent border border-outline text-primary font-label-md text-label-md px-lg py-sm rounded-xl hover:bg-surface-container-low transition-colors whitespace-nowrap text-center" style="text-decoration:none">
                         Check Availability
-                    </button>
+                    </a>
 </div>
 </div>
 <!-- Quick Search Widget (Bento-style floating card) -->

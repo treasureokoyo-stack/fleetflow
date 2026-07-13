@@ -65,13 +65,15 @@ export async function checkAuthRoute(requiredRole) {
 }
 
 export function renderLogin() {
-  const form = document.getElementById("login-form");
+  const form = document.querySelector("form");
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const email = document.getElementById("login-email").value.trim();
-    const password = document.getElementById("login-password").value.trim();
+    const emailInput = document.getElementById("email") || document.getElementById("login-email");
+    const passwordInput = document.getElementById("password") || document.getElementById("login-password");
+    const email = emailInput ? emailInput.value.trim() : "";
+    const password = passwordInput ? passwordInput.value.trim() : "";
     const errorAlert = document.getElementById("login-general-error");
     
     if (errorAlert) errorAlert.style.display = "none";
@@ -96,22 +98,30 @@ export function renderLogin() {
       if (errorAlert) {
         errorAlert.textContent = err.message || "Invalid email or password.";
         errorAlert.style.display = "block";
+      } else {
+        alert(err.message || "Invalid email or password.");
       }
     }
   });
 }
 
 export function renderRegister() {
-  const form = document.getElementById("register-form");
+  const form = document.querySelector("form");
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const firstName = document.getElementById("register-first-name").value.trim();
-    const lastName = document.getElementById("register-last-name").value.trim();
-    const email = document.getElementById("register-email").value.trim();
-    const phone = document.getElementById("register-phone").value.trim();
-    const password = document.getElementById("register-password").value.trim();
+    const fNameInput = document.getElementById("first_name") || document.getElementById("register-first-name");
+    const lNameInput = document.getElementById("last_name") || document.getElementById("register-last-name");
+    const emailInput = document.getElementById("email") || document.getElementById("register-email");
+    const phoneInput = document.getElementById("phone") || document.getElementById("register-phone");
+    const passwordInput = document.getElementById("password") || document.getElementById("register-password");
+
+    const firstName = fNameInput ? fNameInput.value.trim() : "";
+    const lastName = lNameInput ? lNameInput.value.trim() : "";
+    const email = emailInput ? emailInput.value.trim() : "";
+    const phone = phoneInput ? phoneInput.value.trim() : "";
+    const password = passwordInput ? passwordInput.value.trim() : "";
     const errorAlert = document.getElementById("register-general-error");
 
     if (errorAlert) errorAlert.style.display = "none";
@@ -137,6 +147,8 @@ export function renderRegister() {
       if (errorAlert) {
         errorAlert.textContent = err.message || "Registration failed. Try again.";
         errorAlert.style.display = "block";
+      } else {
+        alert(err.message || "Registration failed. Try again.");
       }
     }
   });

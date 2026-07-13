@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FleetFlow Support</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1b1b1d",
+                        "surface-variant": "#e4e2e4",
+                        "tertiary-fixed": "#fcdeb5",
+                        "secondary-fixed": "#dbe1ff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-bright": "#fcf8fa",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "primary-fixed": "#dae2fd",
+                        "surface": "#fcf8fa",
+                        "on-tertiary-fixed": "#271901",
+                        "on-tertiary-container": "#98805d",
+                        "error": "#ba1a1a",
+                        "secondary": "#0051d5",
+                        "outline": "#76777d",
+                        "on-secondary-fixed": "#00174b",
+                        "secondary-container": "#316bf3",
+                        "background": "#fcf8fa",
+                        "surface-container": "#f0edef",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-high": "#eae7e9",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e4e2e4",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "tertiary-container": "#271901",
+                        "inverse-primary": "#bec6e0",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed": "#131b2e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#303032",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#fefcff",
+                        "surface-dim": "#dcd9db",
+                        "on-background": "#1b1b1d",
+                        "primary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "margin-desktop": "32px",
+                        "container-max": "1280px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-xl-mobile": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-shadow {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .custom-shadow-hover:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+            transform: translateY(-2px);
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 500px; /* Arbitrary large enough height */
+            opacity: 1;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-icon.open {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface border-b border-outline-variant shadow-sm sticky top-0 w-full z-50">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+                FleetFlow
+            </div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors py-2" href="#">Fleet</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors py-2" href="#">Reservations</a>
+<!-- Active Navigation Item -->
+<a class="font-label-md text-label-md text-secondary font-bold border-b-2 border-secondary pb-1" href="#">Support</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-sm md:gap-gutter">
+<!-- Search Icon (Mobile/Alt) -->
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 p-2 rounded-full hidden md:block">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<!-- Profile Image -->
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant scale-95 active:scale-90 transition-transform cursor-pointer">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young business person in a well-lit, modern corporate environment. The lighting is soft and flattering, emphasizing a clean and trustworthy corporate aesthetic. High resolution and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzRyCcmMLOfh8XgfPosW7Prwk1xFg55_SgPM512pDKAncFkAlGTzBRF1aheIeLF8IfXlSn-tEcTIdZAEtIvVzhwog8L_CATyyE2YMmdv8REOiNYWwlb-vHefDr_MeUQiBZKdqXqZeTC2sdWKfphbgQvC42EWjveSx8ExnyinQS_uzPgAa42TgwN2LzshmxFNZzitKnXGbcuOsM3zcxK5gbYNtbk1fRiq-vySd8WoPD8zntz4AnFvLiAKhJemJwzlncYFz_uAuuSQ4"/>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full min-h-screen">
+<!-- Hero Search Section -->
+<section class="bg-surface-container-low py-xl px-margin-mobile md:px-margin-desktop text-center border-b border-outline-variant">
+<div class="max-w-3xl mx-auto">
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile md:font-headline-xl md:text-headline-xl text-primary mb-sm">How can we help?</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">Search our knowledge base or browse categories below to find answers quickly.</p>
+<!-- Hero Search Bar -->
+<div class="relative w-full max-w-2xl mx-auto shadow-sm custom-shadow rounded-full group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-secondary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-surface border border-outline-variant rounded-full py-4 pl-12 pr-6 font-body-lg text-body-lg text-on-surface placeholder-outline focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all" placeholder="Search for help articles..." type="text"/>
+</div>
+</div>
+</section>
+<!-- Common Help Categories -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-lg text-center">Common Topics</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<a class="bg-surface border border-outline-variant rounded-xl p-md custom-shadow custom-shadow-hover transition-all flex flex-col items-start gap-4 group" href="#">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Booking & Reservations</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Manage bookings, modifications, and cancellations.</p>
+</div>
+</a>
+<!-- Card 2 -->
+<a class="bg-surface border border-outline-variant rounded-xl p-md custom-shadow custom-shadow-hover transition-all flex flex-col items-start gap-4 group" href="#">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Payments & Billing</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Invoices, payment methods, and deposit inquiries.</p>
+</div>
+</a>
+<!-- Card 3 -->
+<a class="bg-surface border border-outline-variant rounded-xl p-md custom-shadow custom-shadow-hover transition-all flex flex-col items-start gap-4 group" href="#">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Insurance & Protection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Coverage options, claims, and roadside assistance.</p>
+</div>
+</a>
+<!-- Card 4 -->
+<a class="bg-surface border border-outline-variant rounded-xl p-md custom-shadow custom-shadow-hover transition-all flex flex-col items-start gap-4 group" href="#">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">car_rental</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Fleet & Vehicles</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vehicle specifications, features, and availability.</p>
+</div>
+</a>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-lg text-center">Frequently Asked Questions</h2>
+<div class="flex flex-col gap-sm">
+<!-- FAQ Item 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden custom-shadow">
+<button class="w-full px-md py-4 flex justify-between items-center text-left focus:outline-none hover:bg-surface-container-lowest transition-colors" onclick="toggleFAQ(this)">
+<span class="font-body-lg text-body-lg text-primary font-medium">What documents do I need to pick up a rental?</span>
+<span class="material-symbols-outlined text-on-surface-variant accordion-icon">expand_more</span>
+</button>
+<div class="accordion-content bg-surface-container-lowest px-md pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">You will need a valid driver's license, a major credit card in the renter's name, and potentially a secondary form of identification depending on the rental location and vehicle class.</p>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden custom-shadow">
+<button class="w-full px-md py-4 flex justify-between items-center text-left focus:outline-none hover:bg-surface-container-lowest transition-colors" onclick="toggleFAQ(this)">
+<span class="font-body-lg text-body-lg text-primary font-medium">Can I cancel or modify my reservation?</span>
+<span class="material-symbols-outlined text-on-surface-variant accordion-icon">expand_more</span>
+</button>
+<div class="accordion-content bg-surface-container-lowest px-md pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Yes, modifications and cancellations can be made up to 24 hours before your scheduled pick-up time without penalty. Late cancellations may incur a fee.</p>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden custom-shadow">
+<button class="w-full px-md py-4 flex justify-between items-center text-left focus:outline-none hover:bg-surface-container-lowest transition-colors" onclick="toggleFAQ(this)">
+<span class="font-body-lg text-body-lg text-primary font-medium">Is there a mileage limit on rentals?</span>
+<span class="material-symbols-outlined text-on-surface-variant accordion-icon">expand_more</span>
+</button>
+<div class="accordion-content bg-surface-container-lowest px-md pb-4 pt-1">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Most of our standard fleet vehicles come with unlimited mileage. However, specialty and luxury vehicles may have daily mileage caps. Please check your specific reservation details.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Us Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm text-center">Still need help?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg text-center">Our support team is available around the clock to assist you.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter max-w-4xl mx-auto">
+<!-- Contact Card 1 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md text-center flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-2 shadow-sm">
+<span class="material-symbols-outlined text-headline-lg" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Live Chat</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Chat instantly with our support agents for quick resolutions.</p>
+<button class="mt-auto px-6 py-2 bg-transparent border border-outline-variant text-primary font-label-md text-label-md rounded-full hover:bg-surface-container-highest transition-colors w-full">Start Chat</button>
+</div>
+<!-- Contact Card 2 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md text-center flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-2 shadow-sm">
+<span class="material-symbols-outlined text-headline-lg" style="font-variation-settings: 'FILL' 1;">mail</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Email Support</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Send us a detailed message and we'll reply within 24 hours.</p>
+<button class="mt-auto px-6 py-2 bg-transparent border border-outline-variant text-primary font-label-md text-label-md rounded-full hover:bg-surface-container-highest transition-colors w-full">Send Email</button>
+</div>
+<!-- Contact Card 3 -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md text-center flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-secondary text-on-secondary flex items-center justify-center mb-2 shadow-sm">
+<span class="material-symbols-outlined text-headline-lg" style="font-variation-settings: 'FILL' 1;">call</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">24/7 Helpline</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">For urgent matters and roadside assistance.</p>
+<button class="mt-auto px-6 py-2 bg-transparent border border-outline-variant text-primary font-label-md text-label-md rounded-full hover:bg-surface-container-highest transition-colors w-full">1-800-FLEET-FLOW</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full">
+<div class="w-full py-xl px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+<!-- Brand & Copyright -->
+<div class="flex flex-col gap-4">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+                    FleetFlow
+                </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant opacity-80">© 2024 FleetFlow. Premium Car Rentals.</p>
+</div>
+<!-- Empty Columns for layout balancing (as per simple grid in JSON) -->
+<div></div>
+<div></div>
+<!-- Links -->
+<div class="flex flex-col gap-2 md:items-end">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">About Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-secondary font-semibold hover:underline transition-all opacity-80 hover:opacity-100" href="#">Support Center</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">Careers</a>
+</div>
+</div>
+</footer>
+<!-- Interactive Scripts -->
+<script>
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.accordion-icon');
+            
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+            
+            // Optional: Close other open FAQs for a strictly accordion feel
+            // const allContents = document.querySelectorAll('.accordion-content');
+            // const allIcons = document.querySelectorAll('.accordion-icon');
+            // allContents.forEach(c => {
+            //     if(c !== content && c.classList.contains('open')) c.classList.remove('open');
+            // });
+            // allIcons.forEach(i => {
+            //     if(i !== icon && i.classList.contains('open')) i.classList.remove('open');
+            // });
+        }
+    </script>
+</body></html>

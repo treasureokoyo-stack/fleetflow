@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FleetFlow - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303032",
+                        "on-background": "#1b1b1d",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#fefcff",
+                        "primary": "#000000",
+                        "surface": "#fcf8fa",
+                        "on-primary-fixed": "#131b2e",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dcd9db",
+                        "tertiary-container": "#271901",
+                        "outline": "#76777d",
+                        "inverse-primary": "#bec6e0",
+                        "background": "#fcf8fa",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed": "#00174b",
+                        "secondary": "#0051d5",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#316bf3",
+                        "on-surface": "#1b1b1d",
+                        "surface-variant": "#e4e2e4",
+                        "surface-container-high": "#eae7e9",
+                        "surface-container-low": "#f6f3f5",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#dbe1ff",
+                        "surface-container": "#f0edef",
+                        "surface-tint": "#565e74",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-tertiary-fixed": "#271901",
+                        "surface-container-highest": "#e4e2e4",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-primary-container": "#7c839b",
+                        "surface-bright": "#fcf8fa",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface-variant": "#45464d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "margin-desktop": "32px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-xl-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Soft natural shadow for premium feel */
+        .shadow-premium {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .shadow-premium-hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface border-b border-outline-variant shadow-sm sticky top-0 w-full z-50">
+<div class="flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<div class="font-headline-md text-headline-md font-bold text-primary">
+                FleetFlow
+            </div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-gutter h-full">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md flex flex-col justify-center h-full" href="#">Fleet</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md flex flex-col justify-center h-full" href="#">Reservations</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-md text-label-md flex flex-col justify-center h-full" href="#">Support</a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-sm">
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-full scale-95 active:scale-90 flex items-center justify-center">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 rounded-full scale-95 active:scale-90 flex items-center justify-center relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant hover:shadow-md transition-shadow ml-sm">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate manager, soft studio lighting, light mode aesthetic, crisp focus, clean white background, conveying reliability and expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNTTe1sKYhiGBG_5PbyidRvdjt2Gfwn1MDCXNeK9AwPjTWWcPqLXSv8w2IH4Z1tH2wbNHbikcYmhOpIdG01pB21AzksC1_91nB429MPpx8ZPUZPtFNEW9lswqN1WoyUbB3hNnPLFlTeYHw3GUSAn0BLgA6r-K9E0Oo81p7sqlLEtukqguxWzEyProX4RdG0zQjN4pnzkpXArUbff2dsL2IGw_WRs3M3KPSxNiu-3byM2P9GfrC0eMpq2O5LjkBBdiEpdP0WPDf_iw"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Layout Container -->
+<div class="flex flex-1 max-w-container-max mx-auto w-full">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col w-64 border-r border-outline-variant bg-surface-container-lowest pt-lg pb-lg px-sm shrink-0 h-[calc(100vh-64px)] sticky top-16 overflow-y-auto">
+<div class="px-sm mb-md">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Admin Portal</h2>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined fill-icon">dashboard</span>
+                    Overview
+                </a>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+                    Fleet Management
+                </a>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">book</span>
+                    Bookings
+                </a>
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">sell</span>
+                    Pricing
+                </a>
+</nav>
+<div class="mt-auto px-sm pt-md border-t border-outline-variant">
+<a class="flex items-center gap-sm px-sm py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-primary font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop space-y-xl overflow-x-hidden">
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary">Dashboard Overview</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-xs">Real-time performance metrics and recent activities.</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-surface-container-lowest border border-outline-variant text-primary px-md py-sm rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export Report
+                    </button>
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md text-label-md hover:bg-surface-tint transition-colors shadow-premium flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Vehicle
+                    </button>
+</div>
+</header>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-premium hover:shadow-premium-hover transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-sm opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-primary">directions_car</span>
+</div>
+<div class="flex items-center justify-between mb-md relative z-10">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Total Fleet</h3>
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed p-xs rounded-full">directions_car</span>
+</div>
+<div class="relative z-10">
+<p class="font-headline-lg text-headline-lg text-primary">24</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs flex items-center gap-xs text-[#006A60]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +2 this month
+                        </p>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-premium hover:shadow-premium-hover transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-sm opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-secondary">book</span>
+</div>
+<div class="flex items-center justify-between mb-md relative z-10">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Active Bookings</h3>
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed p-xs rounded-full">book</span>
+</div>
+<div class="relative z-10">
+<p class="font-headline-lg text-headline-lg text-primary">8</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs flex items-center gap-xs text-[#006A60]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            High demand
+                        </p>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-premium hover:shadow-premium-hover transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-sm opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-tertiary-fixed-dim">key</span>
+</div>
+<div class="flex items-center justify-between mb-md relative z-10">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Available Cars</h3>
+<span class="material-symbols-outlined text-tertiary bg-tertiary-fixed p-xs rounded-full">key</span>
+</div>
+<div class="relative z-10">
+<p class="font-headline-lg text-headline-lg text-primary">12</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                            50% utilization
+                        </p>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-premium hover:shadow-premium-hover transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-sm opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-primary">payments</span>
+</div>
+<div class="flex items-center justify-between mb-md relative z-10">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Revenue (Week)</h3>
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-xs rounded-full">payments</span>
+</div>
+<div class="relative z-10">
+<p class="font-headline-lg text-headline-lg text-primary">$4,520</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs flex items-center gap-xs text-[#006A60]">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +12% vs last week
+                        </p>
+</div>
+</div>
+</section>
+<!-- Recent Bookings Table Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-premium overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low/50">
+<h2 class="font-headline-md text-headline-md text-primary">Recent Bookings</h2>
+<button class="text-secondary hover:text-secondary-container font-label-md text-label-md transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-lowest">
+<th class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Car</th>
+<th class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">User</th>
+<th class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Dates</th>
+<th class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-sm px-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-8 rounded overflow-hidden bg-surface-variant">
+<img alt="Car thumbnail" class="w-full h-full object-cover" data-alt="A sleek, modern black luxury sedan parked in a well-lit showroom. The lighting is crisp and cool, highlighting the car's polished exterior against a clean, minimalist background, perfect for a high-end car rental interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnepL9V66DA13Qtfqcqvb1ue6QFAUHhuOYOcGjkL6Yg1T2C9ApxrIC2GAXjTgz0DPQ7DG5sdxYOl6jXBV0aUItgBpN4nik1LDv9KzUqGeYiEcw5yhp_XL1B0a6wrRNLwzdLyaZRX2d2IOSyKDaP__eNfv3mSVwxhQjOiLkfWSbh4Iyd2gPbquVc4J5U5XSlck6QND1w3Q1B5zEeDIyNiX1-iu6wvKHEqgwnUIyvvwT08yPOD8HAhSt-J6zxbe5ZRJvdS79GiB7plI"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Mercedes S-Class</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">#BKG-8892</p>
+</div>
+</div>
+</td>
+<td class="py-sm px-md">
+<p class="font-body-md text-body-md text-primary">Eleanor Vance</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">eleanor.v@example.com</p>
+</td>
+<td class="py-sm px-md">
+<p class="font-body-md text-body-md text-primary">Oct 12 - Oct 15</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">3 days</p>
+</td>
+<td class="py-sm px-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed">
+                                        Approved
+                                    </span>
+</td>
+<td class="py-sm px-md text-right">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-sm px-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-8 rounded overflow-hidden bg-surface-variant">
+<img alt="Car thumbnail" class="w-full h-full object-cover" data-alt="A pristine white premium SUV angled dynamically in a bright, modern studio setting. The soft, even lighting emphasizes the vehicle's structural lines and conveys a sense of safety, luxury, and readiness for travel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRn0-GO7h_OCR0u0G1FtUTemJe6DeVKW8R-FNZnUjxguhy9GNX0GbR_c_Hw5kTuWLJedv4yUq96tMqqgPJvnX8UYYUfXDa5_Y4jHRD30Ek_VEZsXgPP6woM-JNP6J5wxnl1cU17Jol222C90Fvhy9RL28cwc804tiANwC7RnIiad6YKDZxSX4X3a5pG__q7lS-kRBKI1_G8kylu7XsfAruIOILkjrf567ol_FWi48LAnAevQryMfRaIDIWbf4Qaqj9PshBXfe8lzE"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Audi Q7</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">#BKG-8893</p>
+</div>
+</div>
+</td>
+<td class="py-sm px-md">
+<p class="font-body-md text-body-md text-primary">Marcus Sterling</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">m.sterling@corp.com</p>
+</td>
+<td class="py-sm px-md">
+<p class="font-body-md text-body-md text-primary">Oct 14 - Oct 20</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">6 days</p>
+</td>
+<td class="py-sm px-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-tertiary-fixed text-on-tertiary-fixed border border-tertiary-fixed-dim">
+                                        Pending
+                                    </span>
+</td>
+<td class="py-sm px-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
+<button class="text-secondary hover:underline font-label-sm text-label-sm">Review</button>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-sm px-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-8 rounded overflow-hidden bg-surface-variant">
+<img alt="Car thumbnail" class="w-full h-full object-cover" data-alt="A striking metallic blue electric sports car positioned in a hyper-clean, minimal environment. Soft top-down lighting accentuates the aerodynamic curves and metallic paint, projecting an image of cutting-edge technology and speed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy4gUDYWv3QMrt4YRHdTlzqSLfiMVY2IgmrfUDvUS0GhSil5sd54PGFQ4g5xLPeVlzNbZKxBm6lrA6Nn0xdMv_A_cR-YOOTYfJzhjd9CIvCa3FYf6Oqog2dP0APWumZQR7DC4io-eqMdR6meHIf7gLn3O8dt17xLPd8DaCb-p_h5IfgzySus8NNHzAd_djjSq6DqBgnHECgVAes2TNZ7dhodcjJlSh3GfN-lRe1ubF6-OCraAzdwxstKL7175dKskiHrKt9FFyOHY"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Porsche Taycan</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">#BKG-8894</p>
+</div>
+</div>
+</td>
+<td class="py-sm px-md">
+<p class="font-body-md text-body-md text-primary">Sarah Jenkins</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">s.jenkins@studio.design</p>
+</td>
+<td class="py-sm px-md">
+<p class="font-body-md text-body-md text-primary">Oct 15 - Oct 16</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">1 day</p>
+</td>
+<td class="py-sm px-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed">
+                                        Approved
+                                    </span>
+</td>
+<td class="py-sm px-md text-right">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-sm border-t border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant px-sm">Showing 1 to 3 of 8 entries</p>
+<div class="flex gap-xs">
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-low rounded disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-low rounded">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full mt-auto">
+<div class="w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-md">
+                    FleetFlow
+                </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    © 2024 FleetFlow. Premium Car Rentals.
+                </p>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md text-primary">Company</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">About Us</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md text-primary">Legal</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-sm">
+<h4 class="font-label-md text-label-md text-primary">Help</h4>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary hover:underline transition-all opacity-80 hover:opacity-100" href="#">Support Center</a>
+</div>
+</div>
+</footer>
+</body></html>
